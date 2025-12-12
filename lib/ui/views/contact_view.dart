@@ -7,7 +7,7 @@ class ContactView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.purple,
-        child: Center(
+        child: const Center(
           child: FittedBox(
             fit: BoxFit.contain,
             child: Text(

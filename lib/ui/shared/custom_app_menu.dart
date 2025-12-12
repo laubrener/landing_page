@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/providers/page_provider.dart';
 import 'package:landing_page/ui/shared/custom_menu_item.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppMenu extends StatefulWidget {
   const CustomAppMenu({super.key});
@@ -15,7 +17,6 @@ class _CustomAppMenuState extends State<CustomAppMenu>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = AnimationController(
       vsync: this,
@@ -25,6 +26,8 @@ class _CustomAppMenuState extends State<CustomAppMenu>
 
   @override
   Widget build(BuildContext context) {
+    PageProvider pageProvider = context.read<PageProvider>();
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -44,25 +47,50 @@ class _CustomAppMenuState extends State<CustomAppMenu>
               _MenuTitle(isOpen: isOpen, controller: controller),
               if (isOpen) ...[
                 CustomMenuItem(
-                  text: 'Home',
-                  onPressed: () {},
-                ),
+                    text: 'Home',
+                    onPressed: () {
+                      pageProvider.goTo(0);
+                      isOpen = false;
+                      controller.reverse();
+                      setState(() {});
+                    },
+                    delay: 50),
                 CustomMenuItem(
-                  text: 'About',
-                  onPressed: () {},
-                ),
+                    text: 'About',
+                    onPressed: () {
+                      pageProvider.goTo(1);
+                      isOpen = false;
+                      controller.reverse();
+                      setState(() {});
+                    },
+                    delay: 200),
                 CustomMenuItem(
-                  text: 'Pricing',
-                  onPressed: () {},
-                ),
+                    text: 'Contact',
+                    onPressed: () {
+                      pageProvider.goTo(2);
+                      isOpen = false;
+                      controller.reverse();
+                      setState(() {});
+                    },
+                    delay: 350),
                 CustomMenuItem(
-                  text: 'Contact',
-                  onPressed: () {},
-                ),
+                    text: 'Pricing',
+                    onPressed: () {
+                      pageProvider.goTo(3);
+                      isOpen = false;
+                      controller.reverse();
+                      setState(() {});
+                    },
+                    delay: 500),
                 CustomMenuItem(
-                  text: 'Location',
-                  onPressed: () {},
-                ),
+                    text: 'Location',
+                    onPressed: () {
+                      pageProvider.goTo(4);
+                      isOpen = false;
+                      controller.reverse();
+                      setState(() {});
+                    },
+                    delay: 650),
                 const SizedBox(height: 8),
               ]
             ],
@@ -75,7 +103,6 @@ class _CustomAppMenuState extends State<CustomAppMenu>
 
 class _MenuTitle extends StatelessWidget {
   const _MenuTitle({
-    super.key,
     required this.isOpen,
     required this.controller,
   });

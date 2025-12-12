@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/providers/page_provider.dart';
 import 'package:landing_page/router/router.dart';
-import 'ui/pages/home_page.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const AppState());
+
+class AppState extends StatelessWidget {
+  const AppState({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => PageProvider()),
+      ],
+      child: const MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -23,9 +38,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/about',
       onGenerateRoute: Flurorouter.router.generator,
-      home: const HomePage(),
     );
   }
 }

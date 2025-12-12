@@ -7,7 +7,7 @@ class LocationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.purpleAccent,
-        child: Center(
+        child: const Center(
           child: FittedBox(
             fit: BoxFit.contain,
             child: Text(
