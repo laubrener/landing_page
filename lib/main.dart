@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/about',
+      initialRoute: '/home',
       onGenerateRoute: Flurorouter.router.generator,
     );
   }
